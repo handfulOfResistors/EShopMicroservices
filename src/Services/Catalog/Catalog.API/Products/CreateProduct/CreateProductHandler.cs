@@ -1,20 +1,18 @@
 ﻿using BuildingBlocks.CQRS;
 using Catalog.API.Models;
-using MediatR;
-using System.Windows.Input;
 
 namespace Catalog.API.Products.CreateProduct
 {
     
-    //data that we need to create a new product - Command Query Object in CQRS and MediatR request lifecycle architecture
+    //CreateProductCommand objekat koji se salje MediatR da izvrsi odredjenu akciju (kreiranje proizvoda)
     public record CreateProductCommand(string Name,string Description,decimal Price, string ImageFile,List<string> Category) 
         : ICommand<CreateProductResult>;
 
 
 
-    //represents the response objectin Command Query Object in CQRS and MediatR request lifecycle architecture
+    //represents the response object in Command Query Object in CQRS and MediatR request lifecycle architecture
     public record  CreateProductResult(Guid Id);
-    //
+    //sadrzi biznis logiku za taj command
     internal class CreateProductCommandHandler : ICommandHandler<CreateProductCommand, CreateProductResult>
     {
         public async  Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
