@@ -17,8 +17,7 @@ namespace Catalog.API.Products.CreateProduct
             //mapiramo request u command object
             //nakon toga kroz MetiatR saljemo request i mapiramo rezultat u response model
 
-            app.MapPost("/products",
-                async (CreateProductRequest request, ISender sender) =>
+            app.MapPost("/products", async (CreateProductRequest request, ISender sender) =>
             {
                 var command = request.Adapt<CreateProductCommand>();
 
