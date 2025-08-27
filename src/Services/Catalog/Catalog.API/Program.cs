@@ -6,6 +6,8 @@ builder.Services.AddMediatR(config => //manadzuje command and query handlers
 {
     config.RegisterServicesFromAssembly(typeof(Program).Assembly);
 });
+
+builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly);//manadzuje validaciju
 builder.Services.AddMarten(options =>
 {
     options.Connection(builder.Configuration.GetConnectionString("Database")!);
